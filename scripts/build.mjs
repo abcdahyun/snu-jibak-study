@@ -1,0 +1,10 @@
+import { readFile, writeFile, mkdir, cp } from 'node:fs/promises';
+const strip = text => text.replace(/^import .*;\r?\n/gm, '').replace(/^export /gm, '');
+const css = await readFile('src/styles.css', 'utf8');
+const js = (await Promise.all(['roster', 'model', 'ui'].map(n => readFile(`src/${n}.js`, 'utf8')))).map(strip).join('\n');
+const html = (await readFile('src/index.html', 'utf8')).replace('/* STYLES */', css).replace('/* APP */', js);
+await mkdir('dist/server', { recursive: true });
+await writeFile('dist/server/html.js', `export default ${JSON.stringify(html)};\n`);
+for (const n of ['worker', 'roster', 'model', 'auth']) await cp(`src/${n}.js`, `dist/server/${n}.js`);
+await writeFile('dist/server/index.js', "import html from './html.js';\nimport {createHandler} from './worker.js';\nexport default createHandler(html);\n");
+console.log('Worker built with administrator authentication.');

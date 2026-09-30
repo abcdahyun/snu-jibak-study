@@ -1,0 +1,15 @@
+{
+  "name": "snu-jibak-study",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22.13.0" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test",
+    "dev": "npm run build && wrangler d1 migrations apply DB --local && wrangler dev",
+    "deploy": "npm run build && wrangler d1 migrations apply DB --remote && wrangler deploy"
+  },
+  "devDependencies": { "wrangler": "4.92.0" },
+  "cloudflare": { "bindings": { "ADMIN_PASSWORD": { "description": "관리자만 알고 있는 20자 이상의 무작위 비밀번호를 입력하세요. 저장소나 참가자에게 공유하지 마세요." } } }
+}
