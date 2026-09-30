@@ -3,11 +3,6 @@
 <body>
 <header class="top"><a class="brand" href="#">스터디 출석부</a></header>
 <main>
-<section class="admin-controls">
-<p id="admin-status"></p>
-<form id="admin-login"><label for="admin-password">관리자 비밀번호</label><input id="admin-password" type="password" autocomplete="current-password" required maxlength="512"><button type="submit">관리자 로그인</button></form>
-<button id="admin-logout" hidden>로그아웃</button>
-</section>
 <div class="heading"><p>10.05–10.25 · 오후 10시 · 더벤티 앞</p><div class="goal"><span>15일 출석</span></div></div>
 <div class="tabs" role="tablist" aria-label="화면 선택"><button id="ranking-tab" class="active" role="tab" aria-controls="ranking-panel" aria-selected="true">출석 랭킹</button><button id="attendance-tab" role="tab" aria-controls="attendance-panel" aria-selected="false">출석 체크</button><span id="period-status">10월 5일 시작</span></div>
 <div id="notice" role="status" class="notice" hidden></div>
@@ -18,5 +13,10 @@
 <section id="attendance-panel" role="tabpanel" aria-labelledby="attendance-tab" hidden>
 <div class="attendance-heading"><span class="help">자동 저장</span><label>출석 날짜<input type="date" id="attendance-date" min="2026-10-05" max="2026-10-25"></label></div>
 <div class="date-strip" id="date-strip" aria-label="출석일 선택"></div><div class="attendance-meta"><strong id="selected-label"></strong><span id="selected-count"></span></div><div id="attendance-list" class="attendance-list"></div>
+</section>
+<section class="admin-controls">
+<p id="admin-status"></p>
+<form id="admin-login"><label for="admin-password">관리자 비밀번호</label><input id="admin-password" type="password" autocomplete="current-password" required maxlength="512"><button type="submit">관리자 로그인</button></form>
+<button id="admin-logout" hidden>로그아웃</button>
 </section>
 </main><script type="module">/* APP */</script></body></html>
