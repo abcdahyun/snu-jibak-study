@@ -1,11 +1,12 @@
-CREATE TABLE IF NOT EXISTS admin_sessions (
-  token_hash TEXT PRIMARY KEY,
-  password_version TEXT NOT NULL,
-  expires_at INTEGER NOT NULL
+CREATE TABLE `admin_sessions` (
+	`token_hash` text PRIMARY KEY NOT NULL,
+	`password_version` text NOT NULL,
+	`expires_at` integer NOT NULL
 );
-CREATE TABLE IF NOT EXISTS login_attempts (
-  ip_hash TEXT NOT NULL,
-  bucket INTEGER NOT NULL,
-  attempts INTEGER NOT NULL,
-  PRIMARY KEY (ip_hash, bucket)
+--> statement-breakpoint
+CREATE TABLE `login_attempts` (
+	`ip_hash` text NOT NULL,
+	`bucket` integer NOT NULL,
+	`attempts` integer NOT NULL,
+	PRIMARY KEY(`ip_hash`, `bucket`)
 );
